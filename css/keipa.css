@@ -9,9 +9,10 @@ html {
 
 /* レイアウトの設定 */
 body {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
+
 
 /* URLリンクの装飾 */
 .url {
@@ -45,6 +46,14 @@ footer {
     font-style: normal;
     padding-left: 25%;
     padding-right: 25%;
+}
+
+.title *{
+    padding: 10px 0;
+}
+
+.main * {
+    padding: 5px 0;
 }
 
 /* タイトルの装飾 */
