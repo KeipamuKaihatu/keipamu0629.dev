@@ -1,5 +1,9 @@
 /* フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+.no-margin {
+    margin: 0;
+}
+
 /* 背景色の設定 */
 html {
     background-color: #aedcf7;
@@ -12,6 +16,39 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
+.header {
+    background-color: #1c1c1c;
+    margin: 0;
+    padding: 0 20px;
+    font-size: 20px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header a:hover {
+    color: #00ccff
+}
+
+.pagelinks ul {
+    display: flex;
+    list-style: none;
+}
+
+.pagelinks li {
+    padding: 0 10px;
+}
+
 
 /* URLリンクの装飾 */
 .url {
@@ -29,6 +66,8 @@ body {
 /* フッターの装飾 */
 footer {
     background-color: #60b6e7;
+    position: absolute;
+    width: 100%;
     height: 48px;
     display: flex;
     justify-content: center;
