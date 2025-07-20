@@ -1,0 +1,202 @@
+/* フォントの読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+/* 基本リセットとレイアウト設定 */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #7ec850; /* マイクラ風グリーン */
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-align: center;
+    color: #2e2e2e;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/* ヘッダー */
+.header {
+    background-color: #3a3a3a; /* ダークなブロック色 */
+    padding: 0 20px;
+    font-size: 20px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header a:hover {
+    color: #00ccff;
+}
+
+.pagelinks ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.pagelinks li {
+    padding: 0 10px;
+}
+
+/* URLリンク */
+.url {
+    text-decoration: none;
+    color: #0055ff;
+    font-weight: bold;
+    transition: color 0.1s;
+}
+
+.url:hover {
+    color: #17eef5;
+}
+
+/* フッター */
+footer {
+    background-color: #5da23b; /* ダークグリーン */
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    position: relative;
+    color: white;
+}
+
+/* メインコンテンツ */
+.main-content {
+    padding: 2rem 10%;
+}
+
+.intro, .features, .join {
+    margin-bottom: 2rem;
+}
+
+h1, h2, p, li {
+    text-align: center;
+}
+
+ul {
+    list-style-position: inside;
+    padding: 0;
+}
+
+/* タイトルセクション */
+.title {
+    background-color: #77b757; /* マイクラ草ブロック色 */
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+}
+
+.title * {
+    padding: 0.25%;
+}
+
+.normal {
+    color: black;
+}
+
+/* ボタン風リンク */
+.button {
+    display: inline-block;
+    background-color: #3a3a3a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.button:hover {
+    background-color: #00ccff;
+    color: #000;
+}
+
+/* IPアドレス強調表示 */
+.ip-address {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: #f4e04d; /* 目立つ黄色 */
+    color: #2e2e2e;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    user-select: all;
+}
+
+.ip-address:hover {
+    background-color: #ffe600;
+}
+
+.header-image {
+    width: 100%;
+    overflow: hidden;
+}
+
+.header-image img.responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1em 2em;
+  border-radius: 12px;
+  text-align: center;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: bold;
+}
+
+.overlay-text button {
+  margin-top: 10px;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border: none;
+  background-color: #16974793;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.overlay-text button:hover {
+  background-color: rgb(181, 160, 42)93;
+}

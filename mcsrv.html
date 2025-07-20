@@ -2,23 +2,83 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>けいぱむ鯖について</title>
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/keisaba.css">
     </head>
 
-    <body>
-        <!-- ヘッダー、ページの上に表示されるパーツ -->
-            <header class="header">
-                <div class="name">
-                    <a href="index.html">けいぱむ開発</a>
-                </div>
-                <nav class="pagelinks">
-                    <ul>
-                        <li><a href="srv-link.html">おすすめリンク</a></li>
-                        <li><a href="keipa.html">プロフィール</a></li>
-                    </ul>
-                </nav>
-            </header>
-    </body>
+        <body>
+    <!-- ヘッダー、ページの上に表示されるパーツ -->
+    <header class="header">
+        <div class="name">
+            <a href="index.html">けいぱむ開発</a>
+        </div>
+        <nav class="pagelinks">
+            <ul>
+                <li><a href="srv-link.html">おすすめリンク</a></li>
+                <li><a href="keipa.html">プロフィール</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="image-wrapper">
+  <img src="img/saba.png" alt="鯖" class="responsive-image">
+  <div class="overlay-text">
+    <h2>サーバーIP：<code id="server-ip">mc.keipamu.dev</code></h2>
+    <button onclick="copyIP()">コピー</button>
+  </div>
+</div>
+
+<script>
+function copyIP() {
+  const ip = document.getElementById("server-ip").innerText;
+  navigator.clipboard.writeText(ip).then(() => {
+    alert("IPアドレスをコピーしました！");
+  });
+}
+</script>
+
+
+<script>
+function copyIP() {
+  const ip = document.getElementById("server-ip").innerText;
+  navigator.clipboard.writeText(ip).then(() => {
+    alert("IPアドレスをコピーしました！");
+  });
+}
+</script>
+
+
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <section class="intro">
+            <h1>けいぱむ鯖へようこそ！</h1>
+            <p>このマインクラフトサーバーは、誰でも参加できる</br>自由で楽しいマインクラフトの世界を提供しています。</p>
+            <p>Java版、統合版 1.20.x 対応、MOD不要ですぐに遊べます。</p>
+        </section>
+
+        <section class="features">
+            <h2>サーバーの特徴</h2>
+            <ul>
+                <li>JAVA版・統合版のクロスプレイ対応</li>
+                <li>建築勢・冒険勢・技術勢みんな歓迎</li>
+                <li>毎週のイベントやコンテスト開催</li>
+                <li>優しい運営と安心のルール</li>
+            </ul>
+        </section>
+
+        <section class="join">
+            <h2>参加方法</h2>
+            <p>サーバーアドレス：<code>mc.keipamu.dev</code></p>
+            <p>ホワイトリスト登録不要、誰でも参加できます。</p>
+            <a href="how-to-join.html" class="button">詳しい参加方法</a>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <p>&copy; 2025 けいぱむ開発. All Rights Reserved.</p>
+    </footer>
+</body>
 </html>
