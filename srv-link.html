@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
-        <title>おすすめリンク集</title>
-        <link rel="icon" href="/img/favicon.ico">
-        <link rel="apple-touch-icon" href="/img/favicon.ico">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>おすすめリンク集</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
 
-    <body>
-        <!-- ヘッダー、ページの上に表示されるパーツ -->
-            <header class="header">
-                <div class="name">
-                    <a href="index.html">けいぱむ開発</a>
-                </div>
-                <nav class="pagelinks">
-                    <ul>
-                        <li><a href="mcsrv.html">けいぱむ鯖について</a></li>
-                        <li><a href="keipa.html">プロフィール</a></li>
-                    </ul>
-                </nav>
-            </header>
-    </body>
+<body>
+    <!-- ヘッダー読み込み -->
+    <div id="header"></div>
+
+    <!-- ここにページのコンテンツを書いてください -->
+
+    <!-- もしフッターを使うなら -->
+    <div id="footer"></div>
+
+    <script>
+      const currentPage = location.pathname.split("/").pop();
+
+      fetch("mainheader.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("header").innerHTML = data;
+
+          // ロゴリンクは非表示対象外にしておく
+          const currentNav = document.querySelectorAll(`a[href$="${currentPage}"]:not(.logo-link)`);
+          currentNav.forEach(el => {
+            el.style.display = "none";
+          });
+        });
+
+      fetch("mainfooter.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+</body>
 </html>

@@ -38,6 +38,31 @@ ul {
     align-items: center;
     position: relative;
     z-index: 10;
+    height: 70px; /* 高さ固定で安定感 */
+}
+
+/* 追加：ヘッダー左側のサイト名エリア */
+.header .name {
+    flex-shrink: 0;
+}
+
+.header .name a {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Mochiy Pop P One", sans-serif;
+    flex-shrink: 0;    /* 縮まらない */
+    text-decoration: none;
+    align-items: center;
+    min-width: 120px;  /* 文字の最小幅確保 */
+    display: flex;     /* 縦中央寄せ */
+    position: absolute;  /* header基準の絶対配置 */
+    top: 50%;            /* 縦中央 */
+    left: 20px;          /* 左端から20px */
+    transform: translateY(-50%);
+    padding-left: 20px;  /* 端にくっつきすぎ防止 */
+    z-index: 100;
+    background: transparent;
 }
 
 .header .logo-link h1 {

@@ -33,6 +33,30 @@ ul {
     align-items: center;
     position: relative;
     z-index: 10;
+    height: 70px;
+}
+
+.header .name {
+    flex-shrink: 0;
+}
+
+.header .name a {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Mochiy Pop P One", sans-serif;
+    flex-shrink: 0;    /* これで縮まらず */
+    text-decoration: none;
+    align-items: center;
+    min-width: 120px;  /* 文字が収まる幅を確保 */
+    display: flex;     /* 中身のaを縦中央に */
+    position: absolute;  /* 親の.headerを基準に絶対配置 */   /* 固定表示 */
+    top: 50%;            /* ヘッダーの高さ中央に */
+    left: 20;             /* 左端に */
+    transform: translateY(-50%);
+    padding-left: 20px;  /* 画面端にくっつきすぎないように少し内側に */
+    z-index: 100;
+    background: transparent;
 }
 
 .header .logo-link h1 {
@@ -151,9 +175,9 @@ ul {
 
 .main {
     position: relative;
-    width: 100%;      /* 横幅いっぱいに */
-    max-width: none;  /* 最大幅制限解除 */
-    margin: 0;        /* 余白リセット */
+    width: 100%;
+    max-width: none;
+    margin: 0;
 }
 
 .main img {
@@ -179,21 +203,42 @@ ul {
     z-index: 1;
 }
 
+.main p {
+    text-align: center;
+    background-color: #ffffff; /* 明るい白背景 */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.main p strong {
+    color: #00a86b; /* アクセントカラー */
+}
+
+.main p a {
+    color: #00a86b;
+    text-decoration: underline;
+}
+
 .container {
-  max-width: 100vw; /* ビューポート幅いっぱいに */
-  padding: 0;
-  flex: 1; 
-  margin: 0 auto;
-  overflow-x: hidden; /* 横スクロール防止 */
+    max-width: 100vw;
+    padding: 0;
+    flex: 1;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* 横スクロールを根本的に抑える */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
-
 
 footer {
     padding: 10px 0;
@@ -203,7 +248,7 @@ footer {
     text-align: center;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     .header .nav-container {
         display: none;
     }

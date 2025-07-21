@@ -16,6 +16,15 @@
             <div class="main">
                 <img src="img/myicon.jpg" alt="メイン画像">
                 <h1>けいぱむ開発</h1>
+                <p>
+                    ようこそ、けいぱむ開発へ。<br>
+                    このサイトでは、けいぱむが手がけたプログラミング関連のサービスやツールを紹介し、
+                    現在進行中のプロジェクトを公開・配布しています。<br>
+                    主に<strong>マインクラフトサーバー</strong>や<strong>Discord BOT</strong>などを開発しており、
+                    技術と遊び心を融合させたコンテンツをお届けしています。<br>
+                    気になる方は、ぜひいろいろ覗いてみてください。<br>
+                    各種リンクや連絡先は、<a href="keipa.html">プロフィール</a>のページからどうぞ。
+                </p>
             </div>
         </main>
 
@@ -23,15 +32,17 @@
     </div>
 
     <script>
-      // ページ名を取得して現在地ハイライト or 非表示
       const currentPage = location.pathname.split("/").pop();
 
       fetch("mainheader.html")
         .then(res => res.text())
         .then(data => {
           document.getElementById("header").innerHTML = data;
-          const currentNav = document.querySelectorAll(`a[href$="${currentPage}"]`);
-          currentNav.forEach(el => el.style.display = "none");
+
+          const currentNav = document.querySelectorAll(`a[href$="${currentPage}"]:not(.logo-link)`);
+          currentNav.forEach(el => {
+            el.style.display = "none";
+          });
         });
 
       fetch("mainfooter.html")
@@ -41,4 +52,5 @@
         });
     </script>
 </body>
+
 </html>

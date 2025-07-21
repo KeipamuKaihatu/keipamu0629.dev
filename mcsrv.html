@@ -1,77 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>けいぱむ鯖について</title>
-        <link rel="icon" href="/img/favicon.ico">
-        <link rel="apple-touch-icon" href="/img/favicon.ico">
-        <link rel="stylesheet" href="css/keisaba.css">
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>けいぱむ鯖について</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/favicon.ico" />
+    <link rel="stylesheet" href="css/keisaba.css" />
+</head>
+<body>
+    <!-- ヘッダー読み込み -->
+    <div id="header"></div>
 
-        <body>
-    <!-- ヘッダー、ページの上に表示されるパーツ -->
-    <header class="header">
-        <div class="name">
-            <a href="index.html">けいぱむ開発</a>
-        </div>
-        <!--pcメニューバー-->
-        <nav class="pagelinks">
-            <ul>
-                <li><a href="srv-link.html">おすすめリンク</a></li>
-                <li><a href="keipa.html">プロフィール</a></li>
-            </ul>
-        </nav>
-        <!--ハンバーガメニュー-->
-        <nav class="nav-container">
-            <input class="checkbox" type="checkbox" id="menu-toggle" />
-            <div class="hamburger-lines">
-                <span class="line line1"></span>
-                <span class="line line2"></span>
-                <span class="line line3"></span>
-            </div>
+    <div class="image-wrapper">
+      <img src="img/saba.png" alt="鯖" class="responsive-image" />
+      <div class="overlay-text">
+        <h2>
+          サーバーIP<br /><code id="server-ip">s1.ssnetwork.io:43360</code>
+        </h2>
+        <button onclick="copyIP()">ipをコピー</button>
+      </div>
+    </div>
 
-                <ul class="menu-items">
-                    <li><a href="srv-link.html">おすすめリンク</a></li>
-                    <li><a href="keipa.html">プロフィール</a></li>
-                    </ul>
-            </nav>
-    </header>
+    <script>
+    function copyIP() {
+      const ip = document.getElementById("server-ip").innerText;
+      navigator.clipboard.writeText(ip).then(() => {
+        alert("IPアドレスをコピーしました！");
+      });
+    }
+    </script>
 
-<div class="image-wrapper">
-  <img src="img/saba.png" alt="鯖" class="responsive-image">
-  <div class="overlay-text">
-    <h2>サーバーIP</br><code id="server-ip">s1.ssnetwork.io:43360</code></h2>
-    <button onclick="copyIP()">ipをコピー</button>
-  </div>
-</div>
-
-<script>
-function copyIP() {
-  const ip = document.getElementById("server-ip").innerText;
-  navigator.clipboard.writeText(ip).then(() => {
-    alert("IPアドレスをコピーしました！");
-  });
-}
-</script>
-
-
-<script>
-function copyIP() {
-  const ip = document.getElementById("server-ip").innerText;
-  navigator.clipboard.writeText(ip).then(() => {
-    alert("IPアドレスをコピーしました！");
-  });
-}
-</script>
-
-
-
-    <!-- メインコンテンツ -->
     <main class="main-content">
         <section class="intro">
             <h1>けいぱむ鯖へようこそ！</h1>
-            <p>このマインクラフトサーバーは、誰でも参加できる</br>自由で楽しいマインクラフトの世界を提供しています。</p>
+            <p>このマインクラフトサーバーは、誰でも参加できる<br />自由で楽しいマインクラフトの世界を提供しています。</p>
             <p>Java版、統合版 1.20.x 対応、MOD不要ですぐに遊べます。</p>
         </section>
 
@@ -93,9 +56,29 @@ function copyIP() {
         </section>
     </main>
 
-    <!-- フッター -->
-    <footer class="footer">
-        <p>&copy; 2025 けいぱむ開発. All Rights Reserved.</p>
-    </footer>
+    <!-- フッター読み込み -->
+    <div id="footer"></div>
+
+    <script>
+      const currentPage = location.pathname.split("/").pop();
+
+      fetch("mainheader.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("header").innerHTML = data;
+
+          // ロゴリンクは非表示対象外にしておく
+          const currentNav = document.querySelectorAll(`a[href$="${currentPage}"]:not(.logo-link)`);
+          currentNav.forEach(el => {
+            el.style.display = "none";
+          });
+        });
+
+      fetch("mainfooter.html")
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
 </body>
 </html>
