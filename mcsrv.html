@@ -16,17 +16,26 @@
       <img src="img/saba.png" alt="鯖" class="responsive-image" />
       <div class="overlay-text">
         <h2>
-          サーバーIP<br /><code id="server-ip">s1.ssnetwork.io:43360</code>
+          サーバーIP<br /><p>※java版</p><code id="server-ip">s1.ssnetwork.io:43360</code>
         </h2>
-        <button onclick="copyIP()">ipをコピー</button>
+        <button id="copy-btn" onclick="copyIP()">ipをコピー</button>
       </div>
     </div>
 
     <script>
     function copyIP() {
       const ip = document.getElementById("server-ip").innerText;
+      const btn = document.getElementById("copy-btn");
       navigator.clipboard.writeText(ip).then(() => {
-        alert("IPアドレスをコピーしました！");
+        btn.innerText = "コピーされました！";
+        btn.style.backgroundColor = "#4caf50";  // 緑
+        btn.style.color = "white";
+
+        setTimeout(() => {
+          btn.innerText = "ipをコピー";
+          btn.style.backgroundColor = "";
+          btn.style.color = "";
+        }, 2000);
       });
     }
     </script>

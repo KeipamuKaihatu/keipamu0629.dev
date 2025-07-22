@@ -1,14 +1,16 @@
 /* フォントの読み込み */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
 .no-margin {
     margin: 0;
 }
 
 /* 背景色の設定 */
-html {
+html, body {
     background-color: #aedcf7;
-    padding-top: 0px;
-    margin-top: 0px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden; /* 横スクロールを防止 */
 }
 
 /* レイアウトの設定 */
@@ -37,7 +39,7 @@ body {
 }
 
 .header a:hover {
-    color: #00ccff
+    color: #00ccff;
 }
 
 .pagelinks ul {
@@ -48,7 +50,6 @@ body {
 .pagelinks li {
     padding: 0 10px;
 }
-
 
 /* URLリンクの装飾 */
 .url {
@@ -84,9 +85,10 @@ footer {
     font-style: normal;
     padding-left: 25%;
     padding-right: 25%;
+    box-sizing: border-box;
 }
 
-.title *{
+.title * {
     padding: 10px 0;
 }
 
@@ -102,11 +104,27 @@ footer {
     font-family: "Zen Maru Gothic", sans-serif;
     font-weight: 700;
     font-style: normal;
+    margin-bottom: 24px; /* タイトル下に余白 */
 }
-.title *{
+
+.title * {
     padding: 0.25%;
 }
 
 .normal {
     color: black;
+}
+
+/* セクション(div)ごとに枠をつける */
+#introduce, #activity, #social {
+    border: none;
+    padding: 100px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }

@@ -209,6 +209,14 @@ ul {
     z-index: 1;
 }
 
+h1, p {
+    text-align: center;
+}
+
+h2, li {
+    text-align: center;
+}
+
 .container {
   max-width: 100vw; /* ビューポート幅いっぱいに */
   padding: 0;
