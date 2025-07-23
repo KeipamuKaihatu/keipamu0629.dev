@@ -7,15 +7,113 @@
     <link rel="icon" href="/img/favicon.ico" />
     <link rel="apple-touch-icon" href="/img/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" />
-</head>
+    <style>
+      .view-toggle {
+        text-align: center;
+        margin: 20px 0;
+      }
 
+      .view-toggle button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background: #7ec850;
+        color: white;
+        transition: background 0.3s;
+      }
+
+      .view-toggle button:hover {
+        background: #6aba42;
+      }
+
+      .link-container {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .icon-item, .list-item {
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        background: #fff;
+        transition: transform 0.3s;
+        text-decoration: none;
+      }
+
+      .icon-item:hover, .list-item:hover {
+        transform: scale(1.03);
+      }
+
+      .icon-item img, .list-item img {
+        object-fit: contain;
+      }
+
+      .icon-item img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+      }
+
+      .list-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        text-align: left;
+      }
+
+      .list-item img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .list-item .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .list-item small, .list-item strong,
+      .icon-item .title, .icon-item .description {
+        color: #000;
+      }
+
+      .icon-item .title {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .icon-item .description {
+        font-size: 0.9em;
+        margin-top: 4px;
+      }
+
+      p {
+        text-align: center;
+      }
+    </style>
+</head>
 <body>
     <!-- ヘッダー読み込み -->
     <div id="header"></div>
 
-    <!-- ここにページのコンテンツを書いてください -->
+    <!-- 表示切替ボタン -->
+    <div class="view-toggle">
+      <button onclick="switchView('icon')">アイコン表示</button>
+      <button onclick="switchView('list')">リスト表示</button>
+    </div>
 
-    <!-- もしフッターを使うなら -->
+    <!-- リンクコンテンツ表示領域 -->
+    <div id="link-container" class="link-container"></div>
+
+    <!-- フッター読み込み -->
     <div id="footer"></div>
 
     <script>
@@ -25,12 +123,8 @@
         .then(res => res.text())
         .then(data => {
           document.getElementById("header").innerHTML = data;
-
-          // ロゴリンクは非表示対象外にしておく
           const currentNav = document.querySelectorAll(`a[href$="${currentPage}"]:not(.logo-link)`);
-          currentNav.forEach(el => {
-            el.style.display = "none";
-          });
+          currentNav.forEach(el => el.style.display = "none");
         });
 
       fetch("mainfooter.html")
@@ -38,6 +132,73 @@
         .then(data => {
           document.getElementById("footer").innerHTML = data;
         });
+
+      function createLinkElement(link, view) {
+        const a = document.createElement('a');
+        a.href = link.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = view === 'icon' ? 'icon-item' : 'list-item';
+
+        const img = document.createElement('img');
+        img.src = `https://www.google.com/s2/favicons?sz=64&domain_url=${link.url}`;
+        img.alt = link.title;
+        a.appendChild(img);
+
+        if (view === 'icon') {
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.textContent = link.title;
+
+          const desc = document.createElement('div');
+          desc.className = 'description';
+          desc.textContent = link.description;
+
+          a.appendChild(title);
+          a.appendChild(desc);
+        } else {
+          const text = document.createElement('div');
+          text.className = 'text';
+
+          const title = document.createElement('strong');
+          title.textContent = link.title;
+
+          const desc = document.createElement('small');
+          desc.textContent = link.description;
+
+          text.appendChild(title);
+          text.appendChild(desc);
+          a.appendChild(text);
+        }
+        return a;
+      }
+
+      let currentView = 'icon';
+      let linkData = [];
+
+      function renderLinks() {
+        const container = document.getElementById("link-container");
+        container.innerHTML = '';
+        container.className = `link-container ${currentView}-view`;
+        linkData.forEach(link => {
+          container.appendChild(createLinkElement(link, currentView));
+        });
+      }
+
+      function switchView(view) {
+        currentView = view;
+        renderLinks();
+      }
+
+      fetch("/link/link.json")
+        .then(res => res.json())
+        .then(data => {
+          linkData = data;
+          renderLinks();
+        });
+
+      // 初期状態でアイコン表示
+      switchView('icon');
     </script>
 </body>
 </html>

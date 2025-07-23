@@ -189,7 +189,7 @@ ul {
 
 .main h1 {
     position: absolute;
-    top: 19%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: "Mochiy Pop P One", sans-serif;
@@ -205,13 +205,13 @@ ul {
 
 .main p {
     text-align: center;
-    padding: 20px;
+    padding: 0;
     margin: 20px auto;
     max-width: 800px;
-    border-radius: 10px;
+    border-radius: 15px;
     color: #333;
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 .main p strong {
@@ -232,7 +232,7 @@ ul {
 }
 
 html, body {
-    height: 100%;
+    height: none;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -278,7 +278,7 @@ footer {
 
     .main h1 {
     position: absolute;
-    top: 0%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: "Mochiy Pop P One", sans-serif;
